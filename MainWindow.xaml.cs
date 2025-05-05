@@ -10,7 +10,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace UkagakaWPF;
+namespace ShinkaShell;
 
 /// <summary>
 /// Interaction logic for MainWindow.xaml
@@ -21,9 +21,8 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
 
-
-        RenderOptions.SetBitmapScalingMode(this, BitmapScalingMode.HighQuality);
-        RenderOptions.SetEdgeMode(this, EdgeMode.Aliased);        
+        //RenderOptions.SetBitmapScalingMode(this, BitmapScalingMode.HighQuality);
+        //RenderOptions.SetEdgeMode(this, EdgeMode.Aliased);        
     }
         
     
@@ -35,6 +34,7 @@ public partial class MainWindow : Window
 
     [DllImport("user32.dll")]
     private static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
+
 
     private void Window_Loaded(object sender, RoutedEventArgs e)
     {
@@ -53,19 +53,9 @@ public partial class MainWindow : Window
     }
 
     
-    private void Exit_Click(object sender, RoutedEventArgs e) 
+    private void Shutdown(object sender, RoutedEventArgs e) 
     {
         Application.Current.Shutdown();
     }
-
-    private void Button_Click(object sender, RoutedEventArgs e)
-    {
-        
-    }
-
-    
-
-
- 
 
 }

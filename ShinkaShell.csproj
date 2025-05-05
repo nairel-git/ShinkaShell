@@ -5,11 +5,16 @@
     <TargetFramework>net8.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>icons\love.ico</ApplicationIcon>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="2.0.1" />
+    <Resource Include="resources\**\*" />
+    <Resource Include="icons\**\*" />
   </ItemGroup>
+
+  
 
 </Project>

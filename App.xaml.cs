@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace UkagakaWPF;
+namespace ShinkaShell;
 
 /// <summary>
 /// Interaction logic for App.xaml
