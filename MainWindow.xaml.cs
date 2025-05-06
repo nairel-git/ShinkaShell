@@ -156,9 +156,6 @@ public partial class MainWindow : Window
         contextMenu.Items.Add(exitItem);
 
         _notifyIcon.ContextMenuStrip = contextMenu;
-
-        // Handle double-click to restore the window
-        _notifyIcon.DoubleClick += (s, e) => ShowWindow();
     }
 
     private void OnSettingsClicked(object sender, EventArgs e)
@@ -171,13 +168,6 @@ public partial class MainWindow : Window
     {
         _notifyIcon.Dispose();
         Application.Current.Shutdown();
-    }
-
-    private void ShowWindow()
-    {
-        this.Show();
-        this.WindowState = WindowState.Normal;
-        this.Activate();
     }
 
     protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
