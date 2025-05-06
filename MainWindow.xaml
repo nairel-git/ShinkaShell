@@ -49,7 +49,5 @@
             MouseUp="Character_MouseUp"
             MouseMove="Character_MouseMove"
         />
-
-    
     </Grid>
 </Window>

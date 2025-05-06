@@ -14,9 +14,6 @@ using System.IO;
 
 namespace ShinkaShell;
 
-/// <summary>
-/// Interaction logic for MainWindow.xaml
-/// </summary>
 public partial class MainWindow : Window
 {
 
@@ -24,12 +21,10 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
         InitializeTrayIcon();
-
-        //RenderOptions.SetBitmapScalingMode(this, BitmapScalingMode.HighQuality);
-        //RenderOptions.SetEdgeMode(this, EdgeMode.Aliased);        
     }
-        
     
+    #region Window
+
     private const int GWL_EXSTYLE = -20;
     private const int WS_EX_NOACTIVATE = 0x08000000;
     
@@ -42,6 +37,7 @@ public partial class MainWindow : Window
 
     private void Window_Loaded(object sender, RoutedEventArgs e)
     {
+
         // Set the window's position to (0, 0)
         this.Left = 0;
         this.Top = 0;
@@ -50,83 +46,16 @@ public partial class MainWindow : Window
         this.Width = SystemParameters.PrimaryScreenWidth;
         this.Height = SystemParameters.PrimaryScreenHeight - 1;
 
+
         var hwnd = new System.Windows.Interop.WindowInteropHelper(this).Handle;
         int extendedStyle = GetWindowLong(hwnd, GWL_EXSTYLE);
         SetWindowLong(hwnd, GWL_EXSTYLE, extendedStyle | WS_EX_NOACTIVATE);
     
     }
 
-    
-    private void Shutdown(object sender, RoutedEventArgs e) 
-    {
-        Application.Current.Shutdown();
-    }
+    #endregion
 
-
-    
-    private bool isDragging = false;
-    private Point lastPosition;
-
-
-    [DllImport("user32.dll")]
-    private static extern bool SetForegroundWindow(IntPtr hWnd);
-
-    [DllImport("user32.dll")]
-    private static extern bool SetActiveWindow(IntPtr hWnd);
-
-    private void Character_MouseDown(object sender, MouseButtonEventArgs e)
-    {
-
-        var hwnd = new System.Windows.Interop.WindowInteropHelper(this).Handle;
-        SetForegroundWindow(hwnd); // Bring the window to the front
-        SetActiveWindow(hwnd); // Set the window as active
-
-        // Log debug information to DebugTextBox
-        DebugTextBox.Text += "\nDebug: Moved";
-        DebugTextBox.ScrollToEnd(); // Ensure the latest log is visible
-
-
-        if (e.LeftButton == MouseButtonState.Pressed)
-        {
-            isDragging = true;
-            CharacterImage.CaptureMouse();
-            lastPosition = e.GetPosition(this);
-        }
-    }
-
-    private void Character_MouseMove(object sender, MouseEventArgs e)
-    {
-        if (isDragging)
-        {
-            // Log debug information to DebugTextBox
-            DebugTextBox.Text += "\nDebug: Moved Drag";
-            DebugTextBox.ScrollToEnd(); // Ensure the latest log is visible
-
-            Point currentPosition = e.GetPosition(this);
-            Vector delta = currentPosition - lastPosition;
-
-            // Update the Margin of the Image to move it
-            Thickness currentMargin = CharacterImage.Margin;
-
-            CharacterImage.Margin = new Thickness(
-                currentMargin.Left + delta.X,
-                currentMargin.Top + delta.Y,
-                currentMargin.Right - delta.X,
-                currentMargin.Bottom - delta.Y
-            );
-
-            lastPosition = currentPosition;
-        }
-}
-
-    private void Character_MouseUp(object sender, MouseButtonEventArgs e)
-    {
-        if (isDragging)
-        {
-            isDragging = false;
-            CharacterImage.ReleaseMouseCapture();
-        }
-    }
+    #region SystemTray
 
     private System.Windows.Forms.NotifyIcon _notifyIcon;
 
@@ -173,7 +102,75 @@ public partial class MainWindow : Window
     protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
     {
         base.OnClosing(e);
-        _notifyIcon.Dispose(); // Clean up the tray icon
+        _notifyIcon.Dispose();
     }
 
+    #endregion
+
+    #region Player
+
+    private bool isDragging = false;
+    private Point lastPosition;
+
+
+    [DllImport("user32.dll")]
+    private static extern bool SetForegroundWindow(IntPtr hWnd);
+
+    private void Character_MouseDown(object sender, MouseButtonEventArgs e)
+    {
+
+        var hwnd = new System.Windows.Interop.WindowInteropHelper(this).Handle;
+
+        SetForegroundWindow(hwnd); // Bring the window to the front
+
+        // Log debug information to DebugTextBox
+        DebugTextBox.Text += "\nDebug: Moved";
+        DebugTextBox.ScrollToEnd(); // Ensure the latest log is visible
+
+
+        if (e.LeftButton == MouseButtonState.Pressed)
+        {
+            isDragging = true;
+            CharacterImage.CaptureMouse();
+            lastPosition = e.GetPosition(this);
+        }
+    }
+
+    private void Character_MouseMove(object sender, MouseEventArgs e)
+    {
+
+        if (isDragging)
+        {
+            // Log debug information to DebugTextBox
+            DebugTextBox.Text += "\nDebug: Moved Drag";
+            DebugTextBox.ScrollToEnd(); // Ensure the latest log is visible
+
+            Point currentPosition = e.GetPosition(this);
+            Vector delta = currentPosition - lastPosition;
+
+            // Update the Margin of the Image to move it
+            Thickness currentMargin = CharacterImage.Margin;
+
+            CharacterImage.Margin = new Thickness(
+                currentMargin.Left + delta.X,
+                currentMargin.Top + delta.Y,
+                currentMargin.Right - delta.X,
+                currentMargin.Bottom - delta.Y
+            );
+
+            lastPosition = currentPosition;
+        }
+    }
+
+    private void Character_MouseUp(object sender, MouseButtonEventArgs e)
+    {
+        if (isDragging)
+        {
+            isDragging = false;
+            CharacterImage.ReleaseMouseCapture();
+        }
+    }
+
+
+    #endregion
 }

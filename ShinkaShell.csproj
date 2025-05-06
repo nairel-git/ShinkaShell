@@ -33,7 +33,7 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <Resource Include="resources\**\*" />
     <Resource Include="icons\**\*" />
+    <Resource Include="resources\**\*" />
   </ItemGroup>
 </Project>
