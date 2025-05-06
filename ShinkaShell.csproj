@@ -1,20 +1,39 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net8.0-windows</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <ApplicationIcon>icons\love.ico</ApplicationIcon>
+    <TargetFramework>net48</TargetFramework>
     <UseWPF>true</UseWPF>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <EnablePreviewFeatures>false</EnablePreviewFeatures>
+    <LangVersion>10.0</LangVersion>
+    <ApplicationIcon>icons\computer.ico</ApplicationIcon>
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Optimize>false</Optimize>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <EnablePreviewFeatures>false</EnablePreviewFeatures>
+    <LangVersion>10.0</LangVersion>
+    <PlatformTarget>x86</PlatformTarget>
+    <ApplicationIcon>icons\computer.ico</ApplicationIcon>
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <PublishSingleFile>true</PublishSingleFile>
+    <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
+    <SelfContained>true</SelfContained>
+    <RuntimeIdentifier>win-x86</RuntimeIdentifier>
+  </PropertyGroup>
+  
   <ItemGroup>
-    <PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="2.0.1" />
     <Resource Include="resources\**\*" />
     <Resource Include="icons\**\*" />
   </ItemGroup>
-
-  
-
 </Project>

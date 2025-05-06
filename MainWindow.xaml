@@ -4,9 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    
-    xmlns:tb="http://www.hardcodet.net/taskbar"
-
     xmlns:local="clr-namespace:ShinkaShell"
     mc:Ignorable="d"
     Title="MainWindow"
@@ -15,8 +12,6 @@
     Height="450"
     Width="450"
     Topmost="True"
-    Focusable="False"
-    ShowActivated="False"
     ShowInTaskbar="False"
     WindowStartupLocation="CenterScreen"
     AllowsTransparency="True"
@@ -24,17 +19,37 @@
     Loaded="Window_Loaded"
     >        
     <Grid>
-        <tb:TaskbarIcon 
-            ToolTipText="Shinka Shell"
-            IconSource="pack://application:,,,/icons/love.ico"
-            MenuActivation="LeftOrRightClick" 
-            >
-            <tb:TaskbarIcon.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="Settings" />
-                    <MenuItem Click="Shutdown" Header="Shutdown" />
-                </ContextMenu>
-            </tb:TaskbarIcon.ContextMenu>
-        </tb:TaskbarIcon>
+
+        <TextBox 
+            x:Name="DebugTextBox"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Top"
+            Height="100"
+            Margin="10"
+            TextWrapping="Wrap"
+            AcceptsReturn="True"
+            IsReadOnly="True"
+            Background="Black"
+            Foreground="White"
+            FontFamily="Consolas"
+            Visibility="Collapsed"
+            FontSize="12"
+        />
+
+        <Image 
+            x:Name="CharacterImage"
+            Source="resources/sprites/character.png"
+            Width="200"
+            Height="200"
+            RenderTransformOrigin="0,1"
+            Stretch="Uniform"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Bottom"
+            MouseDown="Character_MouseDown"
+            MouseUp="Character_MouseUp"
+            MouseMove="Character_MouseMove"
+        />
+
+    
     </Grid>
 </Window>
