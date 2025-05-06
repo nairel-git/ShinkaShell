@@ -38,7 +38,7 @@
 
         <Image 
             x:Name="CharacterImage"
-            Source="resources/sprites/character.png"
+            Source=".\Resources\sprites\character.png"
             Width="200"
             Height="200"
             RenderTransformOrigin="0,1"

@@ -55,58 +55,6 @@ public partial class MainWindow : Window
 
     #endregion
 
-    #region SystemTray
-
-    private System.Windows.Forms.NotifyIcon _notifyIcon;
-
-    private void InitializeTrayIcon()
-    {
-
-        Stream stream = Application.GetResourceStream(new Uri("pack://application:,,,/icons/computer.ico")).Stream;
-        
-        System.Drawing.Icon myIcon = new System.Drawing.Icon(stream);
-
-        stream.Close();
-        
-
-        _notifyIcon = new System.Windows.Forms.NotifyIcon
-        {
-            Icon = myIcon,
-            Visible = true,
-            Text = "Shinka Shell"
-        };
-
-        // Create a context menu for the tray icon
-        var contextMenu = new System.Windows.Forms.ContextMenuStrip();
-        var settingsItem = new System.Windows.Forms.ToolStripMenuItem("Settings", null, OnSettingsClicked);
-        var exitItem = new System.Windows.Forms.ToolStripMenuItem("Exit", null, OnExitClicked);
-
-        contextMenu.Items.Add(settingsItem);
-        contextMenu.Items.Add(exitItem);
-
-        _notifyIcon.ContextMenuStrip = contextMenu;
-    }
-
-    private void OnSettingsClicked(object sender, EventArgs e)
-    {
-        // Handle settings click
-        MessageBox.Show("Settings clicked!", "Shinka Shell");
-    }
-
-    private void OnExitClicked(object sender, EventArgs e)
-    {
-        _notifyIcon.Dispose();
-        Application.Current.Shutdown();
-    }
-
-    protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
-    {
-        base.OnClosing(e);
-        _notifyIcon.Dispose();
-    }
-
-    #endregion
-
     #region Player
 
     private bool isDragging = false;

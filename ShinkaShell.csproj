@@ -6,8 +6,7 @@
     <ImplicitUsings>disable</ImplicitUsings>
     <EnablePreviewFeatures>false</EnablePreviewFeatures>
     <LangVersion>10.0</LangVersion>
-    <ApplicationIcon>icons\computer.ico</ApplicationIcon>
-    <DebugType>portable</DebugType>
+    <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
     <UseWindowsForms>true</UseWindowsForms>
     <Optimize>false</Optimize>
@@ -22,7 +21,7 @@
     <EnablePreviewFeatures>false</EnablePreviewFeatures>
     <LangVersion>10.0</LangVersion>
     <PlatformTarget>x86</PlatformTarget>
-    <ApplicationIcon>icons\computer.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\icons\computer.ico</ApplicationIcon>
     <DebugType>none</DebugType>
     <DebugSymbols>false</DebugSymbols>
     <Optimize>true</Optimize>
@@ -33,7 +32,6 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <Resource Include="icons\**\*" />
-    <Resource Include="resources\**\*" />
+    <Resource Include="Resources\**\*" />
   </ItemGroup>
 </Project>
