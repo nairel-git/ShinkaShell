@@ -18,36 +18,15 @@
     Background="Transparent"
     Loaded="Window_Loaded"
     >        
-    <Grid>
+    
+    <Image 
+        x:Name="CharacterImage"
+        Source=".\Resources\sprites\character.png"
+        Width="200"
+        Height="200"
+        HorizontalAlignment="Left"
+        VerticalAlignment="Top"
+        Stretch="Uniform"
+    />
 
-        <TextBox 
-            x:Name="DebugTextBox"
-            HorizontalAlignment="Stretch"
-            VerticalAlignment="Top"
-            Height="100"
-            Margin="10"
-            TextWrapping="Wrap"
-            AcceptsReturn="True"
-            IsReadOnly="True"
-            Background="Black"
-            Foreground="White"
-            FontFamily="Consolas"
-            Visibility="Collapsed"
-            FontSize="12"
-        />
-
-        <Image 
-            x:Name="CharacterImage"
-            Source=".\Resources\sprites\character.png"
-            Width="200"
-            Height="200"
-            RenderTransformOrigin="0,1"
-            Stretch="Uniform"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Bottom"
-            MouseDown="Character_MouseDown"
-            MouseUp="Character_MouseUp"
-            MouseMove="Character_MouseMove"
-        />
-    </Grid>
 </Window>
