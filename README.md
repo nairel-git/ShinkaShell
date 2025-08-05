@@ -6,8 +6,6 @@ ShinkaShell is a WPF-based Ukagaka-like program designed for modern Windows plat
 
 - **Operating System**: Windows 7 or newer.
 - **Framework**: .NET 8.0 Runtime.
-- **Dependencies**: 
-  - [Hardcodet.NotifyIcon.Wpf](https://github.com/hardcodet/wpf-notifyicon) (v2.0.1)
 
 ## Contributing
 
@@ -15,5 +13,4 @@ Contributions are welcome! Feel free to open issues or submit pull requests to i
 
 ## Acknowledgments
 
-- [Hardcodet.NotifyIcon.Wpf](https://github.com/hardcodet/wpf-notifyicon) for the system tray integration.
 - Inspired by the Ukagaka desktop mascot concept.
