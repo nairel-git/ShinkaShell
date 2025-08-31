@@ -15,7 +15,7 @@ namespace ShinkaShell
 
         public MainWindow()
         {
-            // --- Set Window Properties (replaces XAML attributes) ---
+            // --- Set Window Properties ---
             this.AllowsTransparency = true;
             this.WindowStyle = WindowStyle.None;
             this.Background = Brushes.Transparent;
@@ -23,7 +23,7 @@ namespace ShinkaShell
             this.ShowInTaskbar = false;
             this.ResizeMode = ResizeMode.NoResize;
 
-            // --- Create UI Elements (replaces XAML tags) ---
+            // --- Create UI Elements ---
             CharacterImage = new Image
             {
                 Width = 200,
@@ -37,8 +37,8 @@ namespace ShinkaShell
             MainCanvas.Children.Add(CharacterImage);
             this.Content = MainCanvas;
 
-            InitializeTrayIcon(); // Defined in SystemTray.cs
-            InitCharacter();      // Defined in CharacterMovement.cs
+            InitializeTrayIcon();
+            InitCharacter();
 
             this.Loaded += Window_Loaded;
             CompositionTarget.Rendering += OnRenderFrame;

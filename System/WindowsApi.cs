@@ -2,7 +2,6 @@ using ShinkaShell;
 using System;
 using System.Runtime.InteropServices;
 
-
 public static class WindowsApi
 {   
 

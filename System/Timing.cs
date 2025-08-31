@@ -12,12 +12,7 @@ public static class Timing
     {
         _DeltaTimeTimer.Start();
     }
-
-    public static void SetDeltaTime(float deltaTime)
-    {
-        _DeltaTime = deltaTime;
-    }
-
+    
     public static void DeltaTimeRestart()
     {
         _DeltaTime = (float)_DeltaTimeTimer.Elapsed.TotalSeconds;

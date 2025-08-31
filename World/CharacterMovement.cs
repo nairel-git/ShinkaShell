@@ -80,7 +80,7 @@ namespace ShinkaShell
 
         private void CharacterUpdate()
         {
-            CharacterImage.RenderTransform = new TranslateTransform(Position.X + PivotOffset.X, Position.Y + PivotOffset.Y);
+            CharacterImage.RenderTransform = new TranslateTransform(500,500);
         }
 
         private Vector2 DragOffset;
@@ -115,7 +115,6 @@ namespace ShinkaShell
 
         private void Character_MouseUp(object sender, MouseButtonEventArgs e)
         {
-
             Velocity += VelocityDelta * Timing.DeltaTimeGet() * throwStrength; // Adjust the multiplier for throw strength
             isDragging = false;
             CharacterImage.ReleaseMouseCapture();
