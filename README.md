@@ -5,7 +5,7 @@ ShinkaShell is a WPF-based Ukagaka-like program designed for modern Windows plat
 ## Requirements
 
 - **Operating System**: Windows 7 or newer.
-- **Framework**: .NET 8.0 Runtime.
+- **Framework**: .NET Framework 4.8.
 
 ## Contributing
 
@@ -14,3 +14,4 @@ Contributions are welcome! Feel free to open issues or submit pull requests to i
 ## Acknowledgments
 
 - Inspired by the Ukagaka desktop mascot concept.
+
