@@ -17,20 +17,17 @@ namespace ShinkaShell
         private float throwStrength = 600f; // Adjust this value to change the throw strength
         private float frictionMultiplier = 0.7f; // Adjust this value to change the friction effect
 
-
-
         private Vector2 PivotOffset;
-        
+
         private Random RNG;
 
         private void InitCharacter()
         {
-            
+
             RNG = new Random();
 
-            
             float RandomX = (float)RNG.NextDouble() * (float)SystemParameters.WorkArea.Width;
-            
+
             Position = new Vector2(RandomX, 0);
 
             CharacterImage.MouseDown += Character_MouseDown;
@@ -38,8 +35,6 @@ namespace ShinkaShell
             CharacterImage.MouseUp += Character_MouseUp;
 
             PivotOffset = new Vector2(-(float)CharacterImage.Width / 2, -(float)CharacterImage.Height);
-            CharacterImage.RenderTransform = new TranslateTransform(Position.X + PivotOffset.X, Position.Y + PivotOffset.Y);
-            
         }
 
 
@@ -82,13 +77,17 @@ namespace ShinkaShell
             Position = PredictedPos;
         }
 
+
+        private void CharacterUpdate()
+        {
+            CharacterImage.RenderTransform = new TranslateTransform(Position.X + PivotOffset.X, Position.Y + PivotOffset.Y);
+        }
+
         private Vector2 DragOffset;
-
-
         private Vector2 VelocityDelta;
         private Vector2 LateMousePos;
-        
-        
+
+
         private void Character_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Vector2 mousePos = new Vector2((float)e.GetPosition(this).X, (float)e.GetPosition(this).Y);
@@ -103,7 +102,7 @@ namespace ShinkaShell
         }
 
         private void Character_MouseMove(object sender, MouseEventArgs e)
-        {   
+        {
             Vector2 mousePos = new Vector2((float)e.GetPosition(this).X, (float)e.GetPosition(this).Y);
 
             VelocityDelta = mousePos - LateMousePos;

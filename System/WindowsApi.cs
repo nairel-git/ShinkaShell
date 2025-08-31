@@ -7,7 +7,7 @@ public static class WindowsApi
 {   
 
     #region Constants
-    
+
     private const int GWL_EXSTYLE = -20;
     private const int WS_EX_NOACTIVATE = 0x08000000;
 
@@ -28,12 +28,14 @@ public static class WindowsApi
 
     #region CustomFuncions
 
-    public static void SetGhostWindowStyle(IntPtr hwnd){
+    public static void SetGhostWindowStyle(IntPtr hwnd)
+    {
         int extendedStyle = GetWindowLong(hwnd, GWL_EXSTYLE);
         SetWindowLong(hwnd, GWL_EXSTYLE, extendedStyle | WS_EX_NOACTIVATE);
     }
 
-    public static void BringToForeground(IntPtr hwnd){
+    public static void BringToForeground(IntPtr hwnd)
+    {
         SetForegroundWindow(hwnd);
     }
 

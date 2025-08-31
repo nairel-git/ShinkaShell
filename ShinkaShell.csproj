@@ -1,37 +1,29 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
-  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-    <OutputType>WinExe</OutputType>
+  
+  <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
     <UseWPF>true</UseWPF>
-    <ImplicitUsings>disable</ImplicitUsings>
-    <EnablePreviewFeatures>false</EnablePreviewFeatures>
-    <LangVersion>10.0</LangVersion>
-    <DebugType>full</DebugType>
-    <DebugSymbols>true</DebugSymbols>
     <UseWindowsForms>true</UseWindowsForms>
-    <Optimize>false</Optimize>
+    <ApplicationIcon>Resources\icons\computer.ico</ApplicationIcon>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
 
-  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net48</TargetFramework>
-    <UseWPF>true</UseWPF>
-    <UseWindowsForms>true</UseWindowsForms>
-    <ImplicitUsings>disable</ImplicitUsings>
-    <EnablePreviewFeatures>false</EnablePreviewFeatures>
-    <LangVersion>10.0</LangVersion>
-    <PlatformTarget>x86</PlatformTarget>
-    <ApplicationIcon>Resources\icons\computer.ico</ApplicationIcon>
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
+    <OutputType>Exe</OutputType>
+    <Optimize>false</Optimize>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+  <OutputType>WinExe</OutputType>
+    <Optimize>true</Optimize>
     <DebugType>none</DebugType>
     <DebugSymbols>false</DebugSymbols>
-    <Optimize>true</Optimize>
-    <PublishSingleFile>true</PublishSingleFile>
-    <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
-    <SelfContained>true</SelfContained>
-    <RuntimeIdentifier>win-x86</RuntimeIdentifier>
   </PropertyGroup>
   
   <ItemGroup>
-    <Resource Include="Resources\**\*" />
+    <Resource Include="Resources\**\*"/>
   </ItemGroup>
+
 </Project>
