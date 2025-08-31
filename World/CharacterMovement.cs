@@ -80,7 +80,7 @@ namespace ShinkaShell
 
         private void CharacterUpdate()
         {
-            CharacterImage.RenderTransform = new TranslateTransform(500,500);
+            CharacterImage.RenderTransform = new TranslateTransform(Position.X + PivotOffset.X, Position.Y + PivotOffset.Y);
         }
 
         private Vector2 DragOffset;

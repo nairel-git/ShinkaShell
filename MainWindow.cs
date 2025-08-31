@@ -23,12 +23,15 @@ namespace ShinkaShell
             this.ShowInTaskbar = false;
             this.ResizeMode = ResizeMode.NoResize;
 
+
+            var CharacterSprite = new Uri("pack://application:,,,/resources/sprites/character.png");
+
             // --- Create UI Elements ---
             CharacterImage = new Image
             {
                 Width = 200,
                 Height = 200,
-                Source = new BitmapImage(new Uri("resources/sprites/character.png", UriKind.Relative)),
+                Source = new BitmapImage(CharacterSprite),
                 Stretch = Stretch.Uniform
             };
 
